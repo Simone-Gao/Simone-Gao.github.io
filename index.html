@@ -3,381 +3,305 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>高晓萌 · 个人简介</title>
+<title>高晓萌 · 个人简历</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html, body {
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
     font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: linear-gradient(135deg, #ffe9f0 0%, #fff7ee 50%, #e6f5e6 100%);
+    background: linear-gradient(135deg, #fdf2f8 0%, #fef3c7 50%, #fce7f3 100%);
     min-height: 100vh;
-    color: #3a3a3a;
-    line-height: 1.65;
-    font-size: 14px;
+    padding: 20px;
+    color: #2d2d2d;
   }
+  .container { max-width: 420px; margin: 0 auto; }
 
-  /* ====== Banner ====== */
   .banner {
-    max-width: 1080px;
-    margin: 28px auto 0;
-    padding: 22px 32px;
+    background: linear-gradient(135deg, #ec4899 0%, #f97316 50%, #f59e0b 100%);
+    border-radius: 24px;
+    padding: 32px 24px;
+    color: #fff;
     text-align: center;
-    background: linear-gradient(135deg, rgba(255, 214, 224, 0.6) 0%, rgba(255, 245, 230, 0.6) 50%, rgba(216, 240, 216, 0.6) 100%);
-    border-radius: 16px;
-    backdrop-filter: blur(8px);
-  }
-  .banner .slogan {
-    font-size: 22px;
-    font-weight: 700;
-    color: #3a3a3a;
-    letter-spacing: 1.5px;
-  }
-  .banner .slogan span { color: #e87b9f; }
-  .banner .slogan span:nth-child(2) { color: #4a7c4e; }
-  .banner .meta {
-    margin-top: 8px;
-    font-size: 13px;
-    color: #6a6a6a;
-  }
-  .banner .hint {
-    margin-top: 10px;
-    font-size: 11px;
-    color: #999;
-  }
-
-  /* ====== Layout ====== */
-  .layout {
-    display: grid;
-    grid-template-columns: 1fr 320px 1fr;
-    grid-template-rows: auto auto;
-    gap: 20px;
-    max-width: 1080px;
-    margin: 28px auto;
-    padding: 0 24px;
-    align-items: stretch;
-  }
-
-  .card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(10px);
-    border-radius: 14px;
-    padding: 22px 22px 18px;
-    box-shadow: 0 4px 16px rgba(74, 124, 78, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-  }
-  .card.identity    { grid-column: 1; grid-row: 1; }
-  .card.skills      { grid-column: 3; grid-row: 1; }
-  .card.practice    { grid-column: 1; grid-row: 2; }
-  .card.focus       { grid-column: 3; grid-row: 2; }
-  .illustration     { grid-column: 2; grid-row: 1 / span 2; }
-
-  .card h3 {
-    font-size: 17px;
-    font-weight: 700;
-    color: #4a7c4e;
-    margin-bottom: 4px;
-    padding-left: 12px;
-    border-left: 3px solid #4a7c4e;
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-  }
-  .card h3 .en {
-    font-size: 11px;
-    font-weight: 400;
-    color: #999;
-    letter-spacing: 1.5px;
-  }
-  .card .title-cn {
-    font-size: 19px;
-    font-weight: 700;
-    color: #2a2a2a;
-    margin: 6px 0 12px;
-    padding-left: 12px;
-  }
-
-  .card ul {
-    list-style: none;
-    padding: 0 0 0 12px;
-  }
-  .card ul li {
     position: relative;
-    padding: 6px 0 6px 14px;
-    font-size: 13.5px;
-    color: #4a4a4a;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(236,72,153,0.25);
+  }
+  .banner::before {
+    content: "";
+    position: absolute;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    top: -80px; right: -60px;
+  }
+  .avatar-wrap { position: relative; z-index: 2; }
+  .avatar {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    background: #fff;
+  }
+  .name { font-size: 26px; font-weight: 700; margin-top: 14px; letter-spacing: 2px; }
+  .tagline { font-size: 13px; opacity: 0.95; margin-top: 8px; letter-spacing: 1px; }
+  .slogan {
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
     line-height: 1.6;
   }
-  .card ul li::before {
-    content: '·';
-    position: absolute;
-    left: 4px;
-    color: #4a7c4e;
+
+  .floats {
+    display: flex;
+    justify-content: space-around;
+    margin: 24px 0;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .float-tag {
+    background: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #ec4899;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(236,72,153,0.12);
+    border: 1px solid #fce7f3;
+  }
+
+  .cards { display: flex; flex-direction: column; gap: 16px; }
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 22px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .card-title {
+    font-size: 16px;
     font-weight: 700;
+    color: #ec4899;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
   }
-  .card ul ul {
-    padding-left: 8px;
-    margin: 4px 0;
+  .card-title::before {
+    content: "";
+    width: 4px; height: 18px;
+    background: linear-gradient(180deg, #ec4899, #f97316);
+    border-radius: 2px;
   }
-  .card ul ul li {
-    font-size: 12.5px;
-    color: #6a6a6a;
-    padding: 3px 0 3px 12px;
-  }
-  .card ul ul li::before {
-    content: '○';
-    font-size: 8px;
-    color: #b0b0b0;
-  }
+  .card-content { font-size: 13.5px; line-height: 1.85; color: #4a4a4a; }
+  .card-content strong { color: #2d2d2d; font-weight: 600; }
 
-  .card .tag {
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px dashed #fce7f3;
+    font-size: 13px;
+  }
+  .info-row:last-child { border-bottom: none; }
+  .info-label { color: #999; font-size: 12px; }
+  .info-value { color: #2d2d2d; font-weight: 500; }
+
+  .skill-tag {
     display: inline-block;
-    margin-top: 10px;
-    padding: 5px 14px;
-    background: linear-gradient(135deg, #ffe9ef, #e8f5e9);
-    color: #4a4a4a;
-    border-radius: 999px;
+    background: #fdf2f8;
+    color: #ec4899;
+    padding: 5px 12px;
+    border-radius: 12px;
     font-size: 12px;
-    font-style: italic;
+    margin: 4px 4px 0 0;
+    font-weight: 500;
   }
 
-  .card.exp-head {
+  .job {
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed #f3e8ff;
+  }
+  .job:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .job-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
-  .card.exp-head .date { font-size: 11.5px; color: #888; }
+  .job-title { font-weight: 600; color: #2d2d2d; font-size: 14px; }
+  .job-time { font-size: 12px; color: #999; }
+  .job-company { font-size: 12.5px; color: #666; margin-bottom: 8px; }
+  .job-desc { font-size: 13px; color: #555; line-height: 1.7; }
 
-  /* Skills tags row */
-  .skills-row {
+  details {
+    background: #fff;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    overflow: hidden;
+  }
+  details > summary {
+    padding: 22px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #ec4899;
+    cursor: pointer;
+    list-style: none;
     display: flex;
+    align-items: center;
     gap: 8px;
-    flex-wrap: wrap;
-    padding-left: 12px;
-    margin-bottom: 12px;
+    user-select: none;
   }
-  .skills-row .skill {
-    padding: 5px 12px;
-    border-radius: 999px;
-    font-size: 12.5px;
-    font-weight: 600;
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::before {
+    content: "";
+    width: 4px; height: 18px;
+    background: linear-gradient(180deg, #ec4899, #f97316);
+    border-radius: 2px;
   }
-  .skill.s1 { background: #ffe9ef; color: #e87b9f; }
-  .skill.s2 { background: #e8f5e9; color: #4a7c4e; }
-  .skill.s3 { background: #fff4e0; color: #c97a3b; }
-  .skill.s4 { background: #e6eaff; color: #6b73c4; }
+  details > summary::after {
+    content: "▾";
+    margin-left: auto;
+    transition: transform 0.2s;
+    color: #ec4899;
+  }
+  details[open] > summary::after { transform: rotate(180deg); }
+  details > .edu-content { padding: 0 22px 22px; font-size: 13px; line-height: 1.85; color: #4a4a4a; }
+  .edu-item { margin-bottom: 12px; }
+  .edu-school { font-weight: 600; color: #2d2d2d; }
+  .edu-meta { font-size: 12px; color: #999; margin-top: 2px; }
 
-  /* ====== Illustration ====== */
-  .illustration {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
-  .illustration .hero-wrap {
-    width: 230px;
-    height: 320px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-  .illustration .hero-wrap img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 24px rgba(74, 124, 78, 0.18));
-  }
-
-  .illustration .hi-tag {
-    position: absolute;
-    bottom: 4px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: linear-gradient(135deg, #4a7c4e, #6ba46f);
-    color: #fff;
-    font-size: 11px;
-    padding: 4px 14px;
-    border-radius: 999px;
-    font-weight: 600;
-    letter-spacing: 1px;
-  }
-
-  /* Floating labels around hero */
-  .floating-label {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 6px 12px;
-    border-radius: 999px;
-    box-shadow: 0 4px 12px rgba(74, 124, 78, 0.12);
-    font-size: 12px;
-    font-weight: 600;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    line-height: 1.2;
-    white-space: nowrap;
-  }
-  .floating-label .cn { color: #2a2a2a; font-size: 12.5px; }
-  .floating-label .en { color: #4a7c4e; font-size: 9px; letter-spacing: 1.2px; margin-top: 1px; }
-  .floating-label.tl { top: 18%; left: -32%; }
-  .floating-label.tr { top: 18%; right: -32%; }
-  .floating-label.bl { bottom: 22%; left: -32%; }
-  .floating-label.br { bottom: 22%; right: -32%; }
-
-  /* ====== Footer ====== */
-  footer {
-    max-width: 1080px;
-    margin: 0 auto;
-    padding: 20px 24px 32px;
+  .footer {
     text-align: center;
-    color: #888;
-    font-size: 12.5px;
+    margin-top: 24px;
+    padding: 18px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    font-size: 13px;
+    color: #666;
   }
-  footer a { color: #4a7c4e; text-decoration: none; }
+  .footer-item { margin: 4px 0; }
+  .footer-item strong { color: #ec4899; }
 
-  /* ====== Responsive (mobile) ====== */
-  @media (max-width: 760px) {
-    .layout {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-    }
-    .card.identity, .card.skills, .card.practice, .card.focus,
-    .illustration { grid-column: 1; }
-    .illustration { grid-row: auto; order: -1; }
-    .floating-label.tl, .floating-label.bl { left: 4%; }
-    .floating-label.tr, .floating-label.br { right: 4%; }
+  @media (max-width: 480px) {
+    body { padding: 12px; }
+    .banner { padding: 26px 18px; }
+    .card { padding: 18px; }
   }
 </style>
 </head>
 <body>
+<div class="container">
 
-<!-- ====== Banner ====== -->
-<div class="banner">
-  <div class="slogan">
-    想做品牌运营的电商人 · <span>用数据读懂消费</span> · <span>用内容连接品牌</span>
+ <div class="banner">
+    <div class="avatar-wrap">
+      <img class="avatar" src="https://Simone-Gao.github.io/3d.jpeg" alt="高晓萌 3D 头像">
+    </div>
+    <div class="name">高晓萌</div>
+    <div class="tagline">23岁 · 上海对外经贸大学 · 硕士在读</div>
+    <div class="slogan">想做品牌运营的电商人<br>用数据读懂消费 · 用内容连接品牌</div>
   </div>
-  <div class="meta">@高晓萌 · 23 岁 · 上海对外经贸大学 · 金融学硕士 · 2027 届</div>
-  <div class="hint">⌘ + 滚轮可缩放 · 我为求职方向设计这套视觉系统</div>
+
+  <div class="floats">
+    <span class="float-tag">📝 内容运营</span>
+    <span class="float-tag">📊 数据分析</span>
+    <span class="float-tag">🎬 视觉剪辑</span>
+    <span class="float-tag">🤝 品牌协作</span>
+  </div>
+
+  <div class="cards">
+
+    <div class="card">
+      <div class="card-title">关于我</div>
+      <div class="card-content">
+        <div class="info-row"><span class="info-label">求职方向</span><span class="info-value">品牌方 / 平台 · 电商运营</span></div>
+        <div class="info-row"><span class="info-label">年龄</span><span class="info-value">23 岁</span></div>
+        <div class="info-row"><span class="info-label">所在城市</span><span class="info-value">上海</span></div>
+        <div class="info-row"><span class="info-label">电话</span><span class="info-value">19356153101</span></div>
+        <div class="info-row"><span class="info-label">邮箱</span><span class="info-value">564106263@qq.com</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">我的能力</div>
+      <div class="card-content">
+        <p><strong>📌 内容侧：</strong>直播切片二次剪辑 ·短视频内容分发 · 种草图文编辑 · 商品挂载与文案</p>
+        <p style="margin-top:8px"><strong>📌 数据侧：</strong>生意参谋数据拉取 · 日/周/月报输出 · 内容渗透率看板维护 · Excel/SUMPRODUCT/XLOOKUP</p>
+        <p style="margin-top:8px"><strong>📌 工具侧：</strong>剪映 · 旺店通 ERP · 飞书/Excel · 公众号排版基础</p>
+        <p style="margin-top:12px">
+          <span class="skill-tag">CPA 经济法</span>
+          <span class="skill-tag">初级会计职称</span>
+          <span class="skill-tag">CET-6</span>
+          <span class="skill-tag">剪映</span>
+          <span class="skill-tag">计算机二级</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">我的实践</div>
+      <div class="card-content">
+        <div class="job">
+          <div class="job-head"><span class="job-title">地素时尚股份有限公司 · 电商运营实习生</span><span class="job-time">2026.06-09</span></div>
+          <div class="job-desc">切片剪辑发布 · 内容种草运营 · 数据看板维护，独立负责内容种草周月报，店铺内容渗透率稳定 10-17%。</div>
+        </div>
+        <div class="job">
+          <div class="job-head"><span class="job-title">德醴嘉贸易有限公司 · 跨境电商订单实习生</span><span class="job-time">2026.03-06</span></div>
+          <div class="job-desc">抖音 / 天猫 / 京东三平台 ERP 开票对账 400+ 张 · 跨境样品订单 80+ 笔 · 6 类葡萄酒入库零差错。</div>
+        </div>
+        <div class="job">
+          <div class="job-head"><span class="job-title">上海收钱吧 · 风控实习生</span><span class="job-time">2025.12-2026.03</span></div>
+          <div class="job-desc">逾期大额商户风险周报 · 数图驱动 + IF/透视表交叉分析 · 沉淀 5 个典型预警案例。</div>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>教育背景</summary>
+      <div class="edu-content">
+        <div class="edu-item">
+          <div class="edu-school">上海对外经贸大学 · 硕士 · 金融学</div>
+          <div class="edu-meta">2025.09-2027.06 · GPA 3.45/4</div>
+          <div style="margin-top:6px">主修：金融统计与计量方法、离岸金融监管与风险防范、公司价值管理与案例</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-school">渤海大学 · 本科 · 金融学</div>
+          <div class="edu-meta">2021.09-2025.06 · GPA 3.43/4</div>
+          <div style="margin-top:6px">主修：货币金融学、微观经济学、宏观经济学、商业银行经营学</div>
+          <div style="margin-top:6px">辅修：管理学、中级财务会计、财务会计实训、高级财务会计、税务会计实训</div>
+        </div>
+      </div>
+    </details>
+
+    <div class="card">
+      <div class="card-title">校园与生活</div>
+      <div class="card-content">
+        <p><strong>渤海大学经济学院学生会 · 副会长</strong>（2022.09-2024.06）</p>
+        <p style="margin-top:6px">负责 60-80 人全体会议筹备与闭环，建立"会前议程—会中记录—会后 24 小时纪要"机制，按"决议-责任人-DDL"下发，累计产出 22 份纪要与 18 份报告，决议完成率 95%。</p>
+        <p style="margin-top:6px">对接学院各班级及学生会其他部门，累计处理师生咨询与事务协调 100+ 次。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">关注我</div>
+      <div class="card-content" style="text-align:center">
+        <p>📞 <strong>19356153101</strong></p>
+        <p style="margin-top:6px">📧 <strong>564106263@qq.com</strong></p>
+        <p style="margin-top:14px; color:#999; font-size:12px">期待与您聊聊品牌运营这件事 ☕️</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <div class="footer-item">求职意向：<strong>品牌方 / 平台 · 电商运营</strong></div>
+    <div class="footer-item" style="margin-top:6px; font-size:11px; color:#aaa">© 2026 高晓萌 · Personal Resume</div>
+  </div>
+
 </div>
-
-<!-- ====== Layout ====== -->
-<main class="layout">
-
-  <!-- 左上：身份 -->
-  <div class="card identity">
-    <h3>我的身份 <span class="en">IDENTITY</span></h3>
-    <div class="title-cn">电商运营 · 想做品牌</div>
-    <ul>
-      <li>上海对外经贸大学 · 金融学硕士</li>
-      <li>GPA 3.45 / 4 · 2027 届</li>
-      <li>求职方向：<b>品牌方 / 平台 · 内容 / 用户 / 数据</b></li>
-      <li>已离职 · 可立刻到岗</li>
-    </ul>
-    <div class="tag">结果导向 · 执行力强 · 喜欢追数据</div>
-  </div>
-
-  <!-- 右上：能力 -->
-  <div class="card skills">
-    <h3>我的能力 <span class="en">SKILLS</span></h3>
-    <div class="skills-row">
-      <span class="skill s1">内容运营</span>
-      <span class="skill s2">数据分析</span>
-      <span class="skill s3">视觉剪辑</span>
-      <span class="skill s4">品牌协作</span>
-    </div>
-    <ul>
-      <li><b>剪辑 + 切片</b> · 剪映，单周 200 条</li>
-      <li><b>生意参谋</b> · 店铺 GMV / 种草转化全链路复盘</li>
-      <li><b>Excel 高阶</b> · XLOOKUP / 数据透视 / 散点图</li>
-      <li><b>ERP 系统</b> · 旺店通开票对账 100% 准确</li>
-      <li><b>CET-6 + CPA 经济法</b></li>
-    </ul>
-    <div class="tag">把每一条内容追到 GMV</div>
-  </div>
-
-  <!-- 中央插画 -->
-  <div class="illustration">
-    <div class="floating-label tl"><span class="cn">内容运营</span><span class="en">CONTENT</span></div>
-    <div class="floating-label tr"><span class="cn">数据分析</span><span class="en">DATA</span></div>
-    <div class="floating-label bl"><span class="cn">视觉剪辑</span><span class="en">EDITING</span></div>
-    <div class="floating-label br"><span class="cn">品牌协作</span><span class="en">BRAND</span></div>
-
-    <!-- 占位 · 等你元宝长裙版到位，把下方 src 换成你图路径即可 -->
-    <div class="hero-wrap">
-      <img src="https://github.com/Simone-Gao/Simone-Gao.github.io/raw/main/images/hero.jpg"
-           alt="插画占位"
-           onerror="this.outerHTML='<svg viewBox=\'0 0 200 320\' xmlns=\'http://www.w3.org/2000/svg\' style=\'width:200px;height:320px\'><ellipse cx=\'100\' cy=\'305\' rx=\'70\' ry=\'8\' fill=\'#e8e8e8\'/><ellipse cx=\'100\' cy=\'300\' rx=\'65\' ry=\'6\' fill=\'#fff\' stroke=\'#ddd\'/><path d=\'M 70 195 Q 60 250 55 305 L 145 305 Q 140 250 130 195 Z\' fill=\'#f5ebe0\'/><rect x=\'88\' y=\'155\' width=\'24\' height=\'18\' fill=\'#ffe0c4\'/><ellipse cx=\'100\' cy=\'95\' rx=\'50\' ry=\'55\' fill=\'#ffe5d4\'/><ellipse cx=\'100\' cy=\'50\' rx=\'20\' ry=\'14\' fill=\'#5a4332\'/><path d=\'M 50 90 Q 45 150 60 200 Z\' fill=\'#5a4332\'/><path d=\'M 150 90 Q 155 150 140 200 Z\' fill=\'#5a4332\'/><circle cx=\'83\' cy=\'105\' r=\'6\' fill=\'#3a2818\'/><circle cx=\'83\' cy=\'103\' r=\'2\' fill=\'#fff\'/><circle cx=\'117\' cy=\'105\' r=\'6\' fill=\'#3a2818\'/><circle cx=\'117\' cy=\'103\' r=\'2\' fill=\'#fff\'/><path d=\'M 90 135 Q 100 142 110 135\' stroke=\'#e87b7b\' stroke-width=\'2\' fill=\'none\'/><text x=\'100\' y=\'285\' text-anchor=\'middle\' font-size=\'12\' fill=\'#888\'>插画占位（待换）</text></svg>'"
-      />
-    </div>
-    <div class="hi-tag">Hi! 这是我</div>
-  </div>
-
-  <!-- 左下：实践 -->
-  <div class="card practice">
-    <h3>我的实践 <span class="en">PRACTICE</span></h3>
-    <div class="title-cn">3 段实习 · 每段都打满 KPI</div>
-    <ul>
-      <li>
-        <div class="exp-head">
-          <b>地素时尚 · 电商运营实习</b>
-          <span class="date">2026.06 - 2026.09</span>
-        </div>
-        <ul>
-          <li>抖音/天猫直播切片剪辑，单周 200 条分发</li>
-          <li>种草内容 50 条，覆盖 15 件代言人同款新品</li>
-          <li>维护数据看板，日/周/月报全链路复盘</li>
-        </ul>
-      </li>
-      <li>
-        <div class="exp-head">
-          <b>德醴嘉 · 跨境电商订单实习</b>
-          <span class="date">2026.03 - 2026.06</span>
-        </div>
-        <ul>
-          <li>抖音/天猫/京东 ERP 开票 400+ / 100% 准确</li>
-          <li>跨境样品订单 80+ 笔全程跟进</li>
-          <li>6 类葡萄酒装运入库登记 · 数据零差错</li>
-        </ul>
-      </li>
-      <li>
-        <div class="exp-head">
-          <b>收钱吧 · 风控实习</b>
-          <span class="date">2025.12 - 2026.03</span>
-        </div>
-        <ul>
-          <li>《逾期大额商户风险周报》行业 + 省份分析</li>
-          <li>风险散点图、IF + 数据透视深挖渠道风险</li>
-        </ul>
-      </li>
-    </ul>
-    <div class="tag">"做出来 ≠ 做好，做完能追到结果才算"</div>
-  </div>
-
-  <!-- 右下：关注 -->
-  <div class="card focus">
-    <h3>我的关注 <span class="en">FOCUS</span></h3>
-    <div class="title-cn">品牌 · 数据 · 内容</div>
-    <ul>
-      <li><b>品牌运营</b> · 不止做数据，更要做打动人的事</li>
-      <li><b>消费者洞察</b> · 从 GMV 看到人，再回到 GMV</li>
-      <li><b>内容 → 转化</b> · 让每条切片都讲出 SKU 的故事</li>
-      <li><b>持续学习</b> · CPA、CET-6、剪辑都在路上</li>
-    </ul>
-    <div class="tag">"让每个 SKU 都有自己的内容节奏"</div>
-  </div>
-
-</main>
-
-<!-- ====== Footer ====== -->
-<footer>
-  📱 <a href="tel:19356153101">19356153101</a>
-  　·　
-  📧 <a href="mailto:564106263@qq.com">564106263@qq.com</a>
-  <br><br>
-  <span style="font-size:10.5px;color:#bbb">设计：高晓萌 ✨ 编程：Codex 个人简历作品 · 内含你想要的"做生意"的野心</span>
-</footer>
-
 </body>
 </html>
