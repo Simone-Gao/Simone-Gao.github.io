@@ -6,381 +6,470 @@
 <title>高晓萌 · 个人简历</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
-    background: linear-gradient(110deg, #fde2e4 0%, #fce7c8 35%, #d6efd6 70%, #cfe7f5 100%);
-    min-height: 100vh;
-    color: #2d2d2d;
-    padding: 24px 20px 40px;
-  }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: linear-gradient(110deg, #fde2e4 0%, #fce7c8 35%, #d6efd6 70%, #cfe7f5 100%); min-height: 100vh; color: #2d2d2d; padding: 80px 20px 40px; }
 
-  /* 顶部导航文字 */
-  .top-nav {
-    max-width: 1200px;
-    margin: 0 auto 18px;
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    letter-spacing: 1px;
-    font-weight: 500;
+  /* 固定顶部导航 */
+  .top-bar {
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
+    padding: 14px 20px; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 10px;
   }
-  .top-nav span {
-    display: inline-block;
-    padding: 0 14px;
-    position: relative;
+  .back-btn {
+    background: #fff; padding: 6px 14px; border-radius: 16px;
+    color: #666; font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid #fde2e4; transition: all 0.2s;
   }
-  .top-nav span + span::before {
-    content: "|";
-    position: absolute;
-    left: -2px;
-    color: #ccc;
+  .back-btn:hover { background: #fde2e4; color: #b94a59; }
+  .back-btn.hidden { display: none; }
+  .top-slogan { font-size: 13px; color: #888; letter-spacing: 0.5px; }
+  .page-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+  .page-nav-item {
+    background: #fff; padding: 6px 14px; border-radius: 16px;
+    color: #666; font-size: 13px; font-weight: 500; cursor: pointer;
+    border: 1px solid transparent; transition: all 0.2s;
   }
+  .page-nav-item:hover { border-color: #fde2e4; color: #b94a59; }
+  .page-nav-item.active { background: linear-gradient(135deg, #ec4899, #f97316); color: #fff; border-color: transparent; }
 
-  /* 主体布局 */
-  .layout {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 360px 1fr;
-    grid-template-rows: auto auto;
-    gap: 24px;
-    align-items: stretch;
-    position: relative;
-  }
+  /* 页面切换动画 */
+  .page-section { display: none; animation: fadeIn 0.4s ease; }
+  .page-section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* 四角卡片基础 */
-  .card {
-    background: #fff;
-    border-radius: 22px;
-    padding: 24px 22px;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.06);
-    position: relative;
-  }
-  .card-icon {
-    width: 36px; height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    margin-bottom: 12px;
-  }
-  .icon-pink   { background: #fde2e4; color: #e35d6a; }
-  .icon-green  { background: #d6efd6; color: #4caf50; }
+  /* 首页布局 */
+  .layout { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px 1fr; grid-template-rows: auto auto; gap: 24px; align-items: stretch; position: relative; }
+  .card { background: #fff; border-radius: 22px; padding: 24px 22px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); position: relative; }
+  .card-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
+  .icon-pink { background: #fde2e4; color: #e35d6a; }
+  .icon-green { background: #d6efd6; color: #4caf50; }
   .icon-purple { background: #ece4ff; color: #8e6bd9; }
-  .icon-mint   { background: #d4f1e1; color: #5cb88a; }
-
-  .card-title-zh {
-    font-size: 16px;
-    font-weight: 700;
-    color: #2d2d2d;
-  }
-  .card-title-en {
-    font-size: 10px;
-    color: #aaa;
-    letter-spacing: 1.5px;
-    margin-bottom: 14px;
-    font-weight: 500;
-  }
-  .card h3 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #2d2d2d;
-    margin-bottom: 14px;
-    line-height: 1.4;
-  }
-  .card ul {
-    list-style: none;
-    margin-bottom: 16px;
-  }
-  .card ul li {
-    font-size: 13.5px;
-    color: #555;
-    line-height: 1.8;
-    padding-left: 14px;
-    position: relative;
-  }
-  .card ul li::before {
-    content: "";
-    width: 5px; height: 5px;
-    border-radius: 50%;
-    background: #f5b8c0;
-    position: absolute;
-    left: 0;
-    top: 11px;
-  }
-  .card .pill {
-    display: inline-block;
-    background: #fde2e4;
-    color: #b94a59;
-    padding: 6px 14px;
-    border-radius: 14px;
-    font-size: 12px;
-    margin-top: 4px;
-    font-weight: 500;
-  }
-  .card .pill-green {
-    background: #d6efd6;
-    color: #3d8b3d;
-  }
-  .card .pill-purple {
-    background: #ece4ff;
-    color: #6c4eb8;
-  }
-  .card .pill-mint {
-    background: #d4f1e1;
-    color: #3a8763;
-  }
-
-  /* 四个卡片位置 */
+  .icon-mint { background: #d4f1e1; color: #5cb88a; }
+  .card-title-zh { font-size: 16px; font-weight: 700; color: #2d2d2d; }
+  .card-title-en { font-size: 10px; color: #aaa; letter-spacing: 1.5px; margin-bottom: 14px; font-weight: 500; }
+  .card h3 { font-size: 18px; font-weight: 700; color: #2d2d2d; margin-bottom: 14px; line-height: 1.4; }
+  .card ul { list-style: none; margin-bottom: 16px; }
+  .card ul li { font-size: 13.5px; color: #555; line-height: 1.8; padding-left: 14px; position: relative; }
+  .card ul li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #f5b8c0; position: absolute; left: 0; top: 11px; }
+  .card .pill { display: inline-block; padding: 6px 14px; border-radius: 14px; font-size: 12px; margin-top: 4px; font-weight: 500; cursor: pointer; transition: all 0.2s; }
+  .pill { background: #fde2e4; color: #b94a59; }
+  .pill:hover { transform: scale(1.05); }
+  .pill-green { background: #d6efd6; color: #3d8b3d; }
+  .pill-purple { background: #ece4ff; color: #6c4eb8; }
+  .pill-mint { background: #d4f1e1; color: #3a8763; }
   .card-identity { grid-column: 1; grid-row: 1; }
-  .card-skills   { grid-column: 3; grid-row: 1; }
+  .card-skills { grid-column: 3; grid-row: 1; }
   .card-practice { grid-column: 1; grid-row: 2; }
-  .card-focus    { grid-column: 3; grid-row: 2; }
-
-  /* 中间人物区 */
-  .center {
-    grid-column: 2;
-    grid-row: 1 /3;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 600px;
-  }
-  .avatar {
-    width: 280px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.15));
-    mix-blend-mode: multiply;
-    background: transparent;
-  }
-  .hi-tag {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(255,255,255,0.95);
-    padding: 8px 18px;
-    border-radius: 18px;
-    font-size: 13px;
-    color: #555;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  }
-
-  /* 浮动标签 */
-  .float {
-    position: absolute;
-    background: rgba(255,255,255,0.92);
-    padding: 8px 14px;
-    border-radius: 14px;
-    font-size: 13px;
-    font-weight: 600;
-    color: #2d2d2d;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    backdrop-filter: blur(4px);
-    white-space: nowrap;
-    z-index: 2;
-  }
-  .float-sub {
-    font-size: 10px;
-    color: #999;
-    font-weight: 400;
-    margin-top: 2px;
-    letter-spacing: 0.5px;
-  }
-  .float-1 { top: 18%; left: 0%; }
-  .float-2 { top: 12%; right: -5%; }
-  .float-3 { bottom: 22%; left: -8%; }
-  .float-4 { bottom: 18%; right: -3%; }
-
-  /* 能力卡色块标题 */
+  .card-focus { grid-column: 3; grid-row: 2; }
+  .center { grid-column: 2; grid-row: 1 /3; position: relative; display: flex; align-items: center; justify-content: center; min-height: 600px; }
+  .avatar { width: 280px; height: auto; object-fit: contain; filter: drop-shadow(0 12px 30px rgba(0,0,0,0.15)); mix-blend-mode: multiply; background: transparent; }
+  .hi-tag { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); padding: 8px 18px; border-radius: 18px; font-size: 13px; color: #555; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
+  .float { position: absolute; background: rgba(255,255,255,0.92); padding: 8px 14px; border-radius: 14px; font-size: 13px; font-weight: 600; color: #2d2d2d; box-shadow: 0 6px 18px rgba(0,0,0,0.08); backdrop-filter: blur(4px); white-space: nowrap; z-index: 2; }
+  .float-sub { font-size: 10px; color: #999; font-weight: 400; margin-top: 2px; letter-spacing: 0.5px; }
+  .float-1 { top: 18%; left: 0%; } .float-2 { top: 12%; right: -5%; }
+  .float-3 { bottom: 22%; left: -8%; } .float-4 { bottom: 18%; right: -3%; }
   .skill-headline { margin: 14px 0; }
-  .skill-headline span {
-    display: inline-block;
-    font-size: 18px;
-    font-weight: 700;
-    margin-right: 6px;
-  }
-  .skill-headline .c1 { color: #e35d6a; }
-  .skill-headline .c2 { color: #4caf50; }
-  .skill-headline .c3 { color: #8e6bd9; }
+  .skill-headline span { display: inline-block; font-size: 18px; font-weight: 700; margin-right: 6px; }
+  .skill-headline .c1 { color: #e35d6a; } .skill-headline .c2 { color: #4caf50; } .skill-headline .c3 { color: #8e6bd9; }
   .skill-headline .x { color: #ccc; font-weight: 400; margin: 0 2px; }
+  .skill-item { margin-bottom: 12px; }
+  .skill-item strong { display: block; font-size: 14px; color: #2d2d2d; font-weight: 600; margin-bottom: 2px; }
+  .skill-item .desc { font-size: 12.5px; color: #888; }
 
-  .skill-item {
-    margin-bottom: 12px;
-  }
-  .skill-item strong {
-    display: block;
-    font-size: 14px;
-    color: #2d2d2d;
-    font-weight: 600;
-    margin-bottom: 2px;
-  }
-  .skill-item .desc {
-    font-size: 12.5px;
-    color: #888;
-  }
+  /* 详情页样式 */
+  .detail-container { max-width: 800px; margin: 0 auto; background: #fff; border-radius: 22px; padding: 40px 36px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+  .detail-header { text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px dashed #fde2e4; }
+  .detail-header .icon { width: 56px; height: 56px; border-radius: 50%; background: #fde2e4; color: #e35d6a; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 12px; }
+  .detail-header h1 { font-size: 28px; color: #2d2d2d; margin-bottom: 6px; }
+  .detail-header .en { font-size: 11px; color: #aaa; letter-spacing: 2px; }
+  .detail-header .headline { margin-top: 14px; }
+  .detail-header .headline span { display: inline-block; font-size: 22px; font-weight: 700; margin: 0 4px; }
+  .detail-header .headline .c1 { color: #e35d6a; } .detail-header .headline .c2 { color: #4caf50; } .detail-header .headline .c3 { color: #8e6bd9; }
+  .detail-header .headline .x { color: #ccc; font-weight: 400; }
+  .detail-header .sub { margin-top: 12px; font-size: 16px; color: #6c4eb8; font-weight: 600; }
+  .detail-section { margin-bottom: 28px; }
+  .detail-section h2 { font-size: 17px; color: #e35d6a; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .detail-section h2::before { content: ""; width: 4px; height: 18px; background: linear-gradient(180deg, #e35d6a, #f97316); border-radius: 2px; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .info-item { background: #fdf2f8; padding: 14px 16px; border-radius: 14px; }
+  .info-item .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .info-item .value { font-size: 14px; color: #2d2d2d; font-weight: 600; }
+  .edu-item { padding: 16px; background: #fef9f5; border-radius: 14px; margin-bottom: 12px; }
+  .edu-item .school { font-weight: 700; color: #2d2d2d; margin-bottom: 4px; }
+  .edu-item .meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+  .edu-item .course { font-size: 13px; color: #666; line-height: 1.7; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .tag { background: #fde2e4; color: #b94a59; padding: 6px 14px; border-radius: 14px; font-size: 13px; font-weight: 500; }
+  .skill-block { background: #f6fbf6; border-radius: 16px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #4caf50; }
+  .skill-block h3 { font-size: 16px; color: #2d2d2d; margin-bottom: 8px; }
+  .skill-block p { font-size: 13.5px; color: #555; line-height: 1.85; }
+  .skill-block .points { margin-top: 10px; }
+  .skill-block .points li { font-size: 13px; color: #666; line-height: 1.8; padding-left: 18px; position: relative; list-style: none; }
+  .skill-block .points li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: 700; }
+  .job-block { background: #faf7ff; border-radius: 16px; padding: 22px; margin-bottom: 20px; border-left: 4px solid #8e6bd9; }
+  .job-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+  .job-title { font-weight: 700; color: #2d2d2d; font-size: 15px; }
+  .job-time { font-size: 12px; color: #888; }
+  .job-company { font-size: 13px; color: #6c4eb8; font-weight: 500; margin-bottom: 12px; }
+  .job-list { list-style: none; }
+  .job-list li { font-size: 13.5px; color: #555; line-height: 1.85; padding: 8px 0 8px 18px; position: relative; border-bottom: 1px dashed #ece4ff; }
+  .job-list li:last-child { border-bottom: none; }
+  .job-list li::before { content: "▸"; position: absolute; left: 0; color: #8e6bd9; font-weight: 700; }
+  .job-list li strong { color: #2d2d2d; font-weight: 600; }
+  .job-tag { display: inline-block; background: #ece4ff; color: #6c4eb8; padding: 3px 10px; border-radius: 10px; font-size: 11.5px; margin-right: 6px; font-weight: 500; }
+  .focus-block { background: #f4faf6; border-radius: 16px; padding: 22px; margin-bottom: 18px; border-left: 4px solid #5cb88a; }
+  .focus-block h3 { font-size: 17px; color: #2d2d2d; margin-bottom: 8px; font-weight: 700; }
+  .focus-block p { font-size: 13.5px; color: #555; line-height: 1.85; }
+  .vision { background: linear-gradient(135deg, #fde2e4, #fce7c8); border-radius: 18px; padding: 28px; text-align: center; margin-top: 24px; }
+  .vision h2 { font-size: 18px; color: #b94a59; margin-bottom: 12px; }
+  .vision p { font-size: 14px; color: #555; line-height: 1.9; }
+
+  /* 底部联系条 */
+  .contact-bar { max-width: 1200px; margin: 24px auto 0; background: #fff; border-radius: 18px; padding: 16px 24px; text-align: center; font-size: 13px; color: #666; box-shadow: 0 6px 20px rgba(0,0,0,0.06); display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .contact-bar strong { color: #2d2d2d; }
+  .xhs-mark { position: fixed; bottom: 16px; right: 16px; background: rgba(255,255,255,0.85); padding: 6px 12px; border-radius: 16px; font-size: 11px; color: #ff2442; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
 
   /* 响应式 */
   @media (max-width: 900px) {
-    .layout {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto;
-      gap: 16px;
-    }
-    .card-identity, .card-skills, .card-practice, .card-focus {
-      grid-column: 1;
-      grid-row: auto;
-    }
-    .center {
-      grid-column: 1;
-      grid-row: auto;
-      min-height: 480px;
-    }
-    .float-1 { top: 8%; left: 0%; }
-    .float-2 { top: 4%; right: 0%; }
-    .float-3 { bottom: 8%; left: 0%; }
-    .float-4 { bottom: 4%; right: 0%; }
+    .layout { grid-template-columns: 1fr; grid-template-rows: auto; gap: 16px; }
+    .card-identity, .card-skills, .card-practice, .card-focus { grid-column: 1; grid-row: auto; }
+    .center { grid-column: 1; grid-row: auto; min-height: 480px; }
+    .float-1 { top: 8%; left: 0%; } .float-2 { top: 4%; right: 0%; }
+    .float-3 { bottom: 8%; left: 0%; } .float-4 { bottom: 4%; right: 0%; }
+    .info-grid { grid-template-columns: 1fr; }
+    .detail-container { padding: 28px 22px; }
   }
-
-  /* 右下角水印 */
-  .xhs-mark {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    background: rgba(255,255,255,0.85);
-    padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 11px;
-    color: #ff2442;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-
-  /* 联系信息条 */
-  .contact-bar {
-    max-width: 1200px;
-    margin: 24px auto 0;
-    background: #fff;
-    border-radius: 18px;
-    padding: 16px 24px;
-    text-align: center;
-    font-size: 13px;
-    color: #666;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-    display: flex;
-    justify-content: center;
-    gap: 32px;
-    flex-wrap: wrap;
-  }
-  .contact-bar strong { color: #2d2d2d; }
 </style>
 </head>
 <body>
 
-<div class="top-nav">
-  <span>用数据读懂消费</span>
-  <span>用内容连接品牌</span>
+<!-- 固定顶部导航 -->
+<div class="top-bar">
+  <span class="back-btn" data-target="home">← 返回首页</span>
+  <div class="page-nav">
+    <span class="page-nav-item active" data-target="home">首页</span>
+    <span class="page-nav-item" data-target="identity">身份</span>
+    <span class="page-nav-item" data-target="skills">能力</span>
+    <span class="page-nav-item" data-target="practice">实践</span>
+    <span class="page-nav-item" data-target="focus">关注</span>
+  </div>
 </div>
 
-<div class="layout">
+<!-- ========== 首页 ========== -->
+<section id="home" class="page-section active">
+  <div class="layout">
+    <div class="card card-identity">
+      <div class="card-icon icon-pink">●</div>
+      <div class="card-title-zh">我的身份</div>
+      <div class="card-title-en">BRAND OPERATOR IDENTITY</div>
+      <ul>
+        <li>上海对外经贸大学 · 金融学硕士在读</li>
+        <li>23 岁 · 上海 · 联系方式见底部</li>
+        <li>数据敏感 + 内容感强 + 执行落地</li>
+      </ul>
+      <span class="pill" data-target="identity">查看详情 →</span>
+    </div>
 
-  <!-- 左上：身份 -->
-  <div class="card card-identity">
-    <div class="card-icon icon-pink">●</div>
-    <div class="card-title-zh">我的身份</div>
-    <div class="card-title-en">BRAND OPERATOR IDENTITY</div>
-    <ul>
-      <li>上海对外经贸大学 · 金融学硕士在读</li>
-      <li>23 岁 · 上海 · 联系方式见底部</li>
-      <li>数据敏感 + 内容感强 + 执行落地</li>
-    </ul>
-    <span class="pill">从数据到内容，让品牌与用户双向奔赴</span>
+    <div class="card card-skills">
+      <div class="card-icon icon-green">🔑</div>
+      <div class="card-title-zh">我的能力</div>
+      <div class="card-title-en">BRAND OPERATOR SKILLS</div>
+      <div class="skill-headline">
+        <span class="c1">内容</span><span class="x">×</span><span class="c2">数据</span><span class="x">×</span><span class="c3">协作</span>
+      </div>
+      <div class="skill-item"><strong>内容运营</strong><div class="desc">直播切片 / 种草图文 / 商品挂载与文案</div></div>
+      <div class="skill-item"><strong>数据分析</strong><div class="desc">生意参谋 / Excel·透视表 / 日周月报输出</div></div>
+      <div class="skill-item"><strong>视觉剪辑</strong><div class="desc">剪映 / 二次创作 / 切片筛选标准</div></div>
+      <div class="skill-item"><strong>跨部门协作</strong><div class="desc">销售 / 财务 / 仓储 多角色联动</div></div>
+      <span class="pill pill-green" data-target="skills">查看详情 →</span>
+    </div>
+
+    <div class="card card-practice">
+      <div class="card-icon icon-purple">▲</div>
+      <div class="card-title-zh">我的实践</div>
+      <div class="card-title-en">BRAND OPERATOR PRACTICE</div>
+      <h3>从执行到归因<br>从内容到增长</h3>
+      <ul>
+        <li>地素时尚 · 电商运营实习（2026.06-09）<br>切片剪辑 200+ 条/周 · 种草内容 50 条 · 数据看板维护</li>
+        <li>德醴嘉贸易 · 跨境电商实习（2026.03-06）<br>三平台 ERP 开票 400+ 张 · 跨境样品订单 80+ 笔 · 入库零差错</li>
+        <li>收钱吧 · 风控实习（2025.12-2026.03）<br>逾期周报 · 数据交叉分析 · 沉淀 5 个预警案例</li>
+      </ul>
+      <span class="pill pill-purple" data-target="practice">查看详情 →</span>
+    </div>
+
+    <div class="card card-focus">
+      <div class="card-icon icon-mint">●</div>
+      <div class="card-title-zh">我的关注</div>
+      <div class="card-title-en">BRAND OPERATOR FOCUS</div>
+      <div class="skill-item" style="margin-top:8px"><strong>品牌运营</strong><div class="desc">想做品牌方 / 平台 · 长期主义</div></div>
+      <div class="skill-item"><strong>内容种草</strong><div class="desc">从切片到爆款，从图文到转化</div></div>
+      <div class="skill-item"><strong>数据驱动增长</strong><div class="desc">从生意参谋读懂消费，归因到内容与人群</div></div>
+      <span class="pill pill-mint" data-target="focus">查看详情 →</span>
+    </div>
+
+    <div class="center">
+      <img class="avatar" src="https://Simone-Gao.github.io/3d.jpeg" alt="高晓萌 3D 头像">
+      <div class="float float-1">📝 内容运营<div class="float-sub">Content</div></div>
+      <div class="float float-2">📊 数据分析<div class="float-sub">Data</div></div>
+      <div class="float float-3">🎬 视觉剪辑<div class="float-sub">Editing</div></div>
+      <div class="float float-4">🤝 品牌协作<div class="float-sub">Brand</div></div>
+      <div class="hi-tag">Hi! 这是我</div>
+    </div>
   </div>
+</section>
 
-  <!-- 右上：能力 -->
-  <div class="card card-skills">
-    <div class="card-icon icon-green">🔑</div>
-    <div class="card-title-zh">我的能力</div>
-    <div class="card-title-en">BRAND OPERATOR SKILLS</div>
-    <div class="skill-headline">
-      <span class="c1">内容</span><span class="x">×</span><span class="c2">数据</span><span class="x">×</span><span class="c3">协作</span>
+<!-- ========== 身份详情 ========== -->
+<section id="identity" class="page-section">
+  <div class="detail-container">
+    <div class="detail-header">
+      <div class="icon">●</div>
+      <h1>我的身份</h1>
+      <div class="en">BRAND OPERATOR IDENTITY</div>
     </div>
-    <div class="skill-item">
-      <strong>内容运营</strong>
-      <div class="desc">直播切片 / 种草图文 / 商品挂载与文案</div>
+
+    <div class="detail-section">
+      <h2>基本信息</h2>
+      <div class="info-grid">
+        <div class="info-item"><div class="label">姓名</div><div class="value">高晓萌</div></div>
+        <div class="info-item"><div class="label">年龄</div><div class="value">23 岁</div></div>
+        <div class="info-item"><div class="label">所在地</div><div class="value">上海</div></div>
+        <div class="info-item"><div class="label">学历</div><div class="value">硕士在读</div></div>
+      </div>
     </div>
-    <div class="skill-item">
-      <strong>数据分析</strong>
-      <div class="desc">生意参谋 / Excel·透视表 / 日周月报输出</div>
+
+    <div class="detail-section">
+      <h2>教育背景</h2>
+      <div class="edu-item">
+        <div class="school">上海对外经贸大学 · 硕士 · 金融学</div>
+        <div class="meta">2025.09 - 2027.06 · GPA 3.45/4</div>
+        <div class="course">主修：金融统计与计量方法、离岸金融监管与风险防范、公司价值管理与案例</div>
+      </div>
+      <div class="edu-item">
+        <div class="school">渤海大学 · 本科 · 金融学</div>
+        <div class="meta">2021.09 - 2025.06 · GPA 3.43/4</div>
+        <div class="course">主修：货币金融学、微观经济学、宏观经济学、商业银行经营学<br>辅修：管理学、中级财务会计、财务会计实训、高级财务会计、税务会计实训</div>
+      </div>
     </div>
-    <div class="skill-item">
-      <strong>视觉剪辑</strong>
-      <div class="desc">剪映 / 二次创作 / 切片筛选标准</div>
+
+    <div class="detail-section">
+      <h2>个人特质</h2>
+      <div class="tag-row">
+        <span class="tag">数据敏感</span>
+        <span class="tag">内容感强</span>
+        <span class="tag">执行落地</span>
+        <span class="tag">结果导向</span>
+        <span class="tag">逻辑清晰</span>
+        <span class="tag">抗压能力</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <strong>跨部门协作</strong>
-      <div class="desc">销售 / 财务 / 仓储 多角色联动</div>
+
+    <div class="detail-section">
+      <h2>求职意向</h2>
+      <p style="font-size:14px; color:#555; line-height:1.9">品牌方 / 平台 · 电商运营<br>期待在内容 × 数据 × 协作的交叉口长期成长</p>
     </div>
-    <span class="pill pill-green">用数据读懂消费，用内容连接品牌</span>
   </div>
+</section>
 
-  <!-- 左下：实践 -->
-  <div class="card card-practice">
-    <div class="card-icon icon-purple">▲</div>
-    <div class="card-title-zh">我的实践</div>
-    <div class="card-title-en">BRAND OPERATOR PRACTICE</div>
-    <h3>从执行到归因<br>从内容到增长</h3>
-    <ul>
-      <li>地素时尚 · 电商运营实习（2026.06-09）<br>切片剪辑 200+ 条/周 · 种草内容 50 条 · 数据看板维护</li>
-      <li>德醴嘉贸易 · 跨境电商实习（2026.03-06）<br>三平台 ERP 开票 400+ 张 · 跨境样品订单 80+ 笔 · 入库零差错</li>
-      <li>收钱吧 · 风控实习（2025.12-2026.03）<br>逾期周报 · 数据交叉分析 · 沉淀 5 个预警案例</li>
-    </ul>
-    <span class="pill pill-purple">执行力强 · 结果导向 · 有逻辑</span>
-  </div>
-
-  <!-- 右下：关注 -->
-  <div class="card card-focus">
-    <div class="card-icon icon-mint">●</div>
-    <div class="card-title-zh">我的关注</div>
-    <div class="card-title-en">BRAND OPERATOR FOCUS</div>
-    <div class="skill-item" style="margin-top:8px">
-      <strong>品牌运营</strong>
-      <div class="desc">想做品牌方 / 平台 · 长期主义</div>
+<!-- ========== 能力详情 ========== -->
+<section id="skills" class="page-section">
+  <div class="detail-container">
+    <div class="detail-header">
+      <div class="icon" style="background:#d6efd6; color:#4caf50">🔑</div>
+      <h1>我的能力</h1>
+      <div class="en">BRAND OPERATOR SKILLS</div>
+      <div class="headline">
+        <span class="c1">内容</span><span class="x">×</span><span class="c2">数据</span><span class="x">×</span><span class="c3">协作</span>
+      </div>
     </div>
-    <div class="skill-item">
-      <strong>内容种草</strong>
-      <div class="desc">从切片到爆款，从图文到转化</div>
+
+    <div class="skill-block">
+      <h3>📝 内容运营</h3>
+      <p>基于品牌内容矩阵，把博主素材、直播切片转化为可二次分发的爆款内容。</p>
+      <ul class="points">
+        <li>直播切片筛选与二次剪辑（剪映）</li>
+        <li>种草图文编辑 / 商品挂载 / 标题文案撰写</li>
+        <li>多平台分发（淘宝 / 天猫 / 抖音）</li>
+        <li>日常图文稳定输出 2 条/天</li>
+      </ul>
     </div>
-    <div class="skill-item">
-      <strong>数据驱动增长</strong>
-      <div class="desc">从生意参谋读懂消费，归因到内容与人群</div>
+
+    <div class="skill-block">
+      <h3>📊 数据分析</h3>
+      <p>把生意参谋的数据翻译成业务动作，让每条内容都有归因。</p>
+      <ul class="points">
+        <li>生意参谋全链路数据拉取（曝光/点击/加购/成交）</li>
+        <li>日 / 周 / 月报输出与数据看板维护</li>
+        <li>Excel 透视表 / SUMPRODUCT / XLOOKUP</li>
+        <li>IF 函数 + 交叉对比识别风险与机会</li>
+      </ul>
     </div>
-    <span class="pill pill-mint">期待与您聊聊品牌运营这件事 ☕️</span>
+
+    <div class="skill-block">
+      <h3>🎬 视觉剪辑</h3>
+      <p>从直播回放里挖金子——停留时长、讲解完整度、商品匹配度三维筛选。</p>
+      <ul class="points">
+        <li>30-50 秒短视频二次创作</li>
+        <li>爆款讲解 / 福利款 / 转化话术捕捉</li>
+        <li>商品详情页 + 内容流二次分发</li>
+        <li>单周稳定产出切片 200 条</li>
+      </ul>
+    </div>
+
+    <div class="skill-block">
+      <h3>🤝 跨部门协作</h3>
+      <p>把销售、财务、仓储、博主、平台数据连成一条线。</p>
+      <ul class="points">
+        <li>对接销售完成专票开具与时效保障</li>
+        <li>对接仓储 / 物流处理订单异常</li>
+        <li>与博主沟通素材二次使用</li>
+        <li>学生会 60-80 人会议统筹经验</li>
+      </ul>
+    </div>
   </div>
+</section>
 
-  <!-- 中间人物 -->
-  <div class="center">
-    <img class="avatar" src="https://Simone-Gao.github.io/3d.jpeg" alt="高晓萌 3D 头像">
-    <div class="float float-1">📝 内容运营<div class="float-sub">Content</div></div>
-    <div class="float float-2">📊 数据分析<div class="float-sub">Data</div></div>
-    <div class="float float-3">🎬 视觉剪辑<div class="float-sub">Editing</div></div>
-    <div class="float float-4">🤝 品牌协作<div class="float-sub">Brand</div></div>
-    <div class="hi-tag">Hi! 这是我</div>
+<!-- ========== 实践详情 ========== -->
+<section id="practice" class="page-section">
+  <div class="detail-container">
+    <div class="detail-header">
+      <div class="icon" style="background:#ece4ff; color:#8e6bd9">▲</div>
+      <h1>我的实践</h1>
+      <div class="en">BRAND OPERATOR PRACTICE</div>
+      <div class="sub">从执行到归因 · 从内容到增长</div>
+    </div>
+
+    <div class="job-block">
+      <div class="job-head">
+        <div class="job-title">地素时尚股份有限公司</div>
+        <div class="job-time">2026.06 - 2026.09</div>
+      </div>
+      <div class="job-company">营销管理中心 · 货架电商部 · DZ 货架运营组 · 电商运营实习生</div>
+      <ul class="job-list">
+        <li><strong>切片剪辑发布：</strong>基于天猫/抖音直播回放，独立完成直播切片筛选与短视频剪辑。曾产出 1 条夏季清仓直播切片作为店铺当月重点爆款内容。围绕停留时长、讲解完整度、商品匹配度等维度筛选高光片段，单周分发 200 条至商品详情页。</li>
+        <li><strong>内容种草运营：</strong>聚焦品牌代言人同款新品，独立完成博主拍摄素材的二次编辑与商品挂载（含标题/文案撰写），上新期累计发布 50 条种草内容，覆盖 15 件代言人同款新品。</li>
+        <li><strong>数据看板维护：</strong>独立维护店铺内容种草数据看板，每日基于生意参谋后台拉取并汇总发布量、曝光、加购、种草成交、店铺 GMV、行业排名等全链路数据，输出日/周/月报。</li>
+      </ul>
+      <div style="margin-top:10px">
+        <span class="job-tag">剪映</span>
+        <span class="job-tag">生意参谋</span>
+        <span class="job-tag">种草运营</span>
+      </div>
+    </div>
+
+    <div class="job-block">
+      <div class="job-head">
+        <div class="job-title">德醴嘉贸易有限公司</div>
+        <div class="job-time">2026.03 - 2026.06</div>
+      </div>
+      <div class="job-company">跨境电商订单实习生</div>
+      <ul class="job-list">
+        <li><strong>ERP 开票对账：</strong>独立负责抖音、天猫、京东三大电商平台消费者订单的开票与对账工作。通过旺店通 ERP 平台逐笔核对开票信息（抬头、税号、金额等），累计开票 400+ 张、准确率 100%。同时对接销售部门完成增值税专用发票的开具。</li>
+        <li><strong>跨境订单跟进：</strong>通过旺店通 ERP 创建跨境电商样品订单 80+ 笔，涵盖店铺、物流公司、商品名称及数量等信息，准确率 100%。实时监控订单状态，及时处理异常并汇报。</li>
+        <li><strong>商品入库登记：</strong>根据境外装箱单（Packing List）与商业发票（Commercial Invoice），通过 Excel 编制装运入库单，1-3 月完成 6 类葡萄酒装运入库单编制、数据零差错，为仓储入库及财务成本核算提供准确依据。</li>
+      </ul>
+      <div style="margin-top:10px">
+        <span class="job-tag">旺店通 ERP</span>
+        <span class="job-tag">三平台运营</span>
+        <span class="job-tag">跨境订单</span>
+      </div>
+    </div>
+
+    <div class="job-block">
+      <div class="job-head">
+        <div class="job-title">上海收钱吧互联网科技股份有限公司</div>
+        <div class="job-time">2025.12 - 2026.03</div>
+      </div>
+      <div class="job-company">风控实习生</div>
+      <ul class="job-list">
+        <li><strong>消费洞察：</strong>负责《逾期大额商户风险周报》的逾期用户行业和省份模块。通过对每周 80-100 名大额逾期商户进行分析，输出"餐饮小吃（逾期率 35%）、广东省（占比 28%）"等核心风险标签。</li>
+        <li><strong>数图驱动：</strong>以平均逾期天数与 DPD30+ 占比分析为基础，制作风险散点图，并建立各渠道风险指标的时间趋势图，支撑信贷风险复盘会的周期性决策。</li>
+        <li><strong>风险洞察：</strong>运用 IF 函数与数据透视表，对新老客户、渠道、逾期天数等指标进行交叉对比分析，识别高风险与低风险商户组合，沉淀 5 个典型预警案例。</li>
+      </ul>
+      <div style="margin-top:10px">
+        <span class="job-tag">Excel 进阶</span>
+        <span class="job-tag">数据可视化</span>
+        <span class="job-tag">风险分析</span>
+      </div>
+    </div>
   </div>
+</section>
 
-</div>
+<!-- ========== 关注详情 ========== -->
+<section id="focus" class="page-section">
+  <div class="detail-container">
+    <div class="detail-header">
+      <div class="icon" style="background:#d4f1e1; color:#5cb88a">●</div>
+      <h1>我的关注</h1>
+      <div class="en">BRAND OPERATOR FOCUS</div>
+    </div>
 
-<!-- 底部联系方式条 -->
+    <div class="focus-block">
+      <h3>🎯 品牌运营 · 长期主义</h3>
+      <p>想做品牌方 / 平台，做长期的、有复利的事。希望把内容、数据、用户三者拧成一股绳，让品牌在用户心里从"知道"变成"喜欢"再变成"复购"。</p>
+    </div>
+
+    <div class="focus-block">
+      <h3>📝 内容种草 · 从切片到爆款</h3>
+      <p>兴趣电商时代，每一条切片都是一个内容机会。希望持续打磨选题、剪辑、文案的判断力，把品牌的"日常"变成用户的"心动"。</p>
+    </div>
+
+    <div class="focus-block">
+      <h3>📊 数据驱动增长 · 从生意参谋到决策</h3>
+      <p>数据不是报表上的数字，而是用户的每一次点击、加购、收藏。希望从数据里读懂"为什么这条会爆、那条不会"，让内容投放更聪明。</p>
+    </div>
+
+    <div class="vision">
+      <h2>🌱 我的期待</h2>
+      <p>在内容 × 数据 × 协作的交叉口长期成长<br>从一个执行者变成一个能理解生意的人<br>从一个理解生意的人变成一个能为品牌创造价值的人</p>
+    </div>
+  </div>
+</section>
+
+<!-- 底部联系条（所有页共用） -->
 <div class="contact-bar">
   <div>📞 <strong>19356153101</strong></div>
   <div>📧 <strong>564106263@qq.com</strong></div>
   <div>🎯 <strong>品牌方 / 平台 · 电商运营</strong></div>
 </div>
 
-<div class="xhs-mark">📕 小红书号 · Simone_Gao</div>
+<div class="xhs-mark">📕 Simone_Gao</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
+
+    document.querySelectorAll('.page-nav-item').forEach(a => {
+      a.classList.toggle('active', a.dataset.target === id);
+    });
+    document.querySelector('.back-btn').classList.toggle('hidden', id === 'home');
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (location.hash.slice(1) !== id) {
+      history.pushState(null, '', '#' + id);
+    }
+  }
+
+  document.addEventListener('click', e => {
+    const el = e.target.closest('[data-target]');
+    if (el) {
+      e.preventDefault();
+      showPage(el.dataset.target);
+    }
+  });
+
+  window.addEventListener('popstate', () => {
+    const id = location.hash.slice(1) || 'home';
+    showPage(id);
+  });
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const id = location.hash.slice(1) || 'home';
+    showPage(id);
+  });
+</script>
 
 </body>
 </html>
