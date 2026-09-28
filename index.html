@@ -149,11 +149,12 @@
     min-height: 600px;
   }
   .avatar {
-    width: 240px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 30px;
-    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.12));
+    width: 280px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 30px rgba(0,0,0,0.15));
+    mix-blend-mode: multiply;
+    background: transparent;
   }
   .hi-tag {
     position: absolute;
@@ -180,6 +181,7 @@
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
     backdrop-filter: blur(4px);
     white-space: nowrap;
+    z-index: 2;
   }
   .float-sub {
     font-size: 10px;
@@ -193,7 +195,7 @@
   .float-3 { bottom: 22%; left: -8%; }
   .float-4 { bottom: 18%; right: -3%; }
 
-  /* 技能三个色块标题 */
+  /* 能力卡色块标题 */
   .skill-headline { margin: 14px 0; }
   .skill-headline span {
     display: inline-block;
@@ -221,7 +223,7 @@
     color: #888;
   }
 
-  /*响应式：小屏堆叠 */
+  /* 响应式 */
   @media (max-width: 900px) {
     .layout {
       grid-template-columns: 1fr;
@@ -243,7 +245,7 @@
     .float-4 { bottom: 4%; right: 0%; }
   }
 
-  /* 右下角小红书水印 */
+  /* 右下角水印 */
   .xhs-mark {
     position: fixed;
     bottom: 16px;
@@ -256,6 +258,24 @@
     font-weight: 600;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
+
+  /* 联系信息条 */
+  .contact-bar {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    background: #fff;
+    border-radius: 18px;
+    padding: 16px 24px;
+    text-align: center;
+    font-size: 13px;
+    color: #666;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .contact-bar strong { color: #2d2d2d; }
 </style>
 </head>
 <body>
@@ -272,10 +292,9 @@
     <div class="card-icon icon-pink">●</div>
     <div class="card-title-zh">我的身份</div>
     <div class="card-title-en">BRAND OPERATOR IDENTITY</div>
-    <h3>想做品牌运营的<br>电商人 🌱</h3>
     <ul>
       <li>上海对外经贸大学 · 金融学硕士在读</li>
-      <li>求职意向：品牌方 / 平台 · 电商运营</li>
+      <li>23 岁 · 上海 · 联系方式见底部</li>
       <li>数据敏感 + 内容感强 + 执行落地</li>
     </ul>
     <span class="pill">从数据到内容，让品牌与用户双向奔赴</span>
@@ -299,7 +318,7 @@
     </div>
     <div class="skill-item">
       <strong>视觉剪辑</strong>
-      <div class="desc">剪映 / 二次创作 /切片筛选标准</div>
+      <div class="desc">剪映 / 二次创作 / 切片筛选标准</div>
     </div>
     <div class="skill-item">
       <strong>跨部门协作</strong>
@@ -352,6 +371,13 @@
     <div class="hi-tag">Hi! 这是我</div>
   </div>
 
+</div>
+
+<!-- 底部联系方式条 -->
+<div class="contact-bar">
+  <div>📞 <strong>19356153101</strong></div>
+  <div>📧 <strong>564106263@qq.com</strong></div>
+  <div>🎯 <strong>品牌方 / 平台 · 电商运营</strong></div>
 </div>
 
 <div class="xhs-mark">📕 小红书号 · Simone_Gao</div>
