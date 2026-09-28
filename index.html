@@ -80,12 +80,19 @@
   .edu-item .course { font-size: 13px; color: #666; line-height: 1.7; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
   .tag { background: #fde2e4; color: #b94a59; padding: 6px 14px; border-radius: 14px; font-size: 13px; font-weight: 500; }
-  .skill-block { background: #f6fbf6; border-radius: 16px; padding: 20px; margin-bottom: 16px; border-left: 4px solid #4caf50; }
-  .skill-block h3 { font-size: 16px; color: #2d2d2d; margin-bottom: 8px; }
-  .skill-block p { font-size: 13.5px; color: #555; line-height: 1.85; }
-  .skill-block .points { margin-top: 10px; }
-  .skill-block .points li { font-size: 13px; color: #666; line-height: 1.8; padding-left: 18px; position: relative; list-style: none; }
-  .skill-block .points li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: 700; }
+
+  .skill-block { background: #f6fbf6; border-radius: 16px; margin-bottom: 14px; border-left: 4px solid #4caf50; overflow: hidden; }
+  .skill-block summary { padding: 18px 22px; list-style: none; cursor: pointer; display: flex; align-items: center; gap: 10px; user-select: none; transition: background 0.2s; }
+  .skill-block summary::-webkit-details-marker { display: none; }
+  .skill-block summary::after { content: "▸"; color: #4caf50; font-size: 14px; transition: transform 0.2s; margin-left: auto; flex-shrink: 0; }
+  .skill-block[open] summary::after { transform: rotate(90deg); }
+  .skill-block summary:hover { background: rgba(214,239,214,0.3); }
+  .skill-block summary h3 { font-size: 16px; color: #2d2d2d; margin: 0; font-weight: 600; display: flex; align-items: center; gap: 10px; flex: 1; }
+  .skill-content { padding: 0 22px 18px; border-top: 1px dashed #c8e6c9; padding-top: 14px; }
+  .skill-content p { font-size: 13.5px; color: #555; line-height: 1.85; margin-bottom: 10px; }
+  .skill-content .points { list-style: none; }
+  .skill-content .points li { font-size: 13px; color: #666; line-height: 1.8; padding-left: 18px; position: relative; }
+  .skill-content .points li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: 700; }
 
   .job-block { background: #faf7ff; border-radius: 16px; margin-bottom: 14px; border-left: 4px solid #8e6bd9; overflow: hidden; }
   .job-block summary { padding: 18px 22px; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; transition: background 0.2s; }
@@ -258,49 +265,65 @@
       </div>
     </div>
 
-    <div class="skill-block">
-      <h3>📝 内容运营</h3>
-      <p>基于品牌内容矩阵，把博主素材、直播切片转化为可二次分发的爆款内容。</p>
-      <ul class="points">
-        <li>直播切片筛选与二次剪辑（剪映）</li>
-        <li>种草图文编辑 / 商品挂载 / 标题文案撰写</li>
-        <li>多平台分发（淘宝 / 天猫 / 抖音）</li>
-        <li>日常图文稳定输出 2 条/天</li>
-      </ul>
-    </div>
+    <details class="skill-block">
+      <summary>
+        <h3><span style="font-size:18px">📝</span> 内容运营</h3>
+      </summary>
+      <div class="skill-content">
+        <p>基于品牌内容矩阵，把博主素材、直播切片转化为可二次分发的爆款内容。</p>
+        <ul class="points">
+          <li>直播切片筛选与二次剪辑（剪映）</li>
+          <li>种草图文编辑 / 商品挂载 / 标题文案撰写</li>
+          <li>多平台分发（淘宝 / 天猫 / 抖音）</li>
+          <li>日常图文稳定输出 2 条/天</li>
+        </ul>
+      </div>
+    </details>
 
-    <div class="skill-block">
-      <h3>📊 数据分析</h3>
-      <p>把生意参谋的数据翻译成业务动作，让每条内容都有归因。</p>
-      <ul class="points">
-        <li>生意参谋全链路数据拉取（曝光/点击/加购/成交）</li>
-        <li>日 / 周 / 月报输出与数据看板维护</li>
-        <li>Excel 透视表 / SUMPRODUCT / XLOOKUP</li>
-        <li>IF 函数 + 交叉对比识别风险与机会</li>
-      </ul>
-    </div>
+    <details class="skill-block">
+      <summary>
+        <h3><span style="font-size:18px">📊</span> 数据分析</h3>
+      </summary>
+      <div class="skill-content">
+        <p>把生意参谋的数据翻译成业务动作，让每条内容都有归因。</p>
+        <ul class="points">
+          <li>生意参谋全链路数据拉取（曝光/点击/加购/成交）</li>
+          <li>日 / 周 / 月报输出与数据看板维护</li>
+          <li>Excel 透视表 / SUMPRODUCT / XLOOKUP</li>
+          <li>IF 函数 + 交叉对比识别风险与机会</li>
+        </ul>
+      </div>
+    </details>
 
-    <div class="skill-block">
-      <h3>🎬 视觉剪辑</h3>
-      <p>从直播回放里挖金子——停留时长、讲解完整度、商品匹配度三维筛选。</p>
-      <ul class="points">
-        <li>30-50 秒短视频二次创作</li>
-        <li>爆款讲解 / 福利款 / 转化话术捕捉</li>
-        <li>商品详情页 + 内容流二次分发</li>
-        <li>单周稳定产出切片 200 条</li>
-      </ul>
-    </div>
+    <details class="skill-block">
+      <summary>
+        <h3><span style="font-size:18px">🎬</span> 视觉剪辑</h3>
+      </summary>
+      <div class="skill-content">
+        <p>从直播回放里挖金子——停留时长、讲解完整度、商品匹配度三维筛选。</p>
+        <ul class="points">
+          <li>30-50 秒短视频二次创作</li>
+          <li>爆款讲解 / 福利款 / 转化话术捕捉</li>
+          <li>商品详情页 + 内容流二次分发</li>
+          <li>单周稳定产出切片 200 条</li>
+        </ul>
+      </div>
+    </details>
 
-    <div class="skill-block">
-      <h3>🤝 跨部门协作</h3>
-      <p>把销售、财务、仓储、博主、平台数据连成一条线。</p>
-      <ul class="points">
-        <li>对接销售完成专票开具与时效保障</li>
-        <li>对接仓储 / 物流处理订单异常</li>
-        <li>与博主沟通素材二次使用</li>
-        <li>学生会 60-80 人会议统筹经验</li>
-      </ul>
-    </div>
+    <details class="skill-block">
+      <summary>
+        <h3><span style="font-size:18px">🤝</span> 跨部门协作</h3>
+      </summary>
+      <div class="skill-content">
+        <p>把销售、财务、仓储、博主、平台数据连成一条线。</p>
+        <ul class="points">
+          <li>对接销售完成专票开具与时效保障</li>
+          <li>对接仓储 / 物流处理订单异常</li>
+          <li>与博主沟通素材二次使用</li>
+          <li>学生会 60-80 人会议统筹经验</li>
+        </ul>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -349,11 +372,11 @@
           <li><strong>跨境订单跟进：</strong>通过旺店通 ERP 创建跨境电商样品订单 80+ 笔，涵盖店铺、物流公司、商品名称及数量等信息，准确率 100%。实时监控订单状态，及时处理异常并汇报。</li>
           <li><strong>商品入库登记：</strong>根据境外装箱单（Packing List）与商业发票（Commercial Invoice），通过 Excel 编制装运入库单，1-3 月完成 6 类葡萄酒装运入库单编制、数据零差错，为仓储入库及财务成本核算提供准确依据。</li>
         </ul>
-        <div style="margin-top:12px">
-          <span class="job-tag">旺店通 ERP</span>
-          <span class="job-tag">三平台运营</span>
-          <span class="job-tag">跨境订单</span>
-        </div>
+          <div style="margin-top:12px">
+            <span class="job-tag">旺店通 ERP</span>
+            <span class="job-tag">三平台运营</span>
+            <span class="job-tag">跨境订单</span>
+          </div>
       </div>
     </details>
 
