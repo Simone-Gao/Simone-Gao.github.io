@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>我的身份 · 高晓萌</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: linear-gradient(110deg, #fde2e4 0%, #fce7c8 35%, #d6efd6 70%, #cfe7f5 100%); min-height: 100vh; color: #2d2d2d; padding: 24px 20px 40px; }
+  .top-bar { max-width: 800px; margin: 0 auto 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .back-btn { background: #fff; padding: 8px 18px; border-radius: 20px; text-decoration: none; color: #666; font-size: 13px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .back-btn:hover { background: #fde2e4; color: #b94a59; }
+  .top-slogan { font-size: 13px; color: #888; letter-spacing: 0.5px; }
+  .page-nav { max-width: 800px; margin: 0 auto 18px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+  .page-nav a { background: #fff; padding: 8px 16px; border-radius: 20px; text-decoration: none; color: #666; font-size: 12.5px; font-weight: 500; box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+  .page-nav a.active { background: linear-gradient(135deg, #ec4899, #f97316); color: #fff; }
+  .detail-container { max-width: 800px; margin: 0 auto; background: #fff; border-radius: 22px; padding: 40px 36px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+  .detail-header { text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px dashed #fde2e4; }
+  .detail-header .icon { width: 56px; height: 56px; border-radius: 50%; background: #fde2e4; color: #e35d6a; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 12px; }
+  .detail-header h1 { font-size: 28px; color: #2d2d2d; margin-bottom: 6px; }
+  .detail-header .en { font-size: 11px; color: #aaa; letter-spacing: 2px; }
+  .detail-section { margin-bottom: 28px; }
+  .detail-section h2 { font-size: 17px; color: #e35d6a; margin-bottom: 14px; display: flex; align-items: center; gap: 8px; }
+  .detail-section h2::before { content: ""; width: 4px; height: 18px; background: linear-gradient(180deg, #e35d6a, #f97316); border-radius: 2px; }
+  .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .info-item { background: #fdf2f8; padding: 14px 16px; border-radius: 14px; }
+  .info-item .label { font-size: 11px; color: #999; margin-bottom: 4px; }
+  .info-item .value { font-size: 14px; color: #2d2d2d; font-weight: 600; }
+  .edu-item { padding: 16px; background: #fef9f5; border-radius: 14px; margin-bottom: 12px; }
+  .edu-item .school { font-weight: 700; color: #2d2d2d; margin-bottom: 4px; }
+  .edu-item .meta { font-size: 12px; color: #999; margin-bottom: 6px; }
+  .edu-item .course { font-size: 13px; color: #666; line-height: 1.7; }
+  .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .tag { background: #fde2e4; color: #b94a59; padding: 6px 14px; border-radius: 14px; font-size: 13px; font-weight: 500; }
+  .contact-bar { max-width: 800px; margin: 24px auto 0; background: #fff; border-radius: 18px; padding: 16px 24px; text-align: center; font-size: 13px; color: #666; box-shadow: 0 6px 20px rgba(0,0,0,0.06); display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
+  .contact-bar strong { color: #2d2d2d; }
+  .xhs-mark { position: fixed; bottom: 16px; right: 16px; background: rgba(255,255,255,0.85); padding: 6px 12px; border-radius: 16px; font-size: 11px; color: #ff2442; font-weight: 600; }
+  @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } .detail-container { padding: 28px 22px; } }
+</style>
+</head>
+<body>
+
+<div class="top-bar">
+  <a href="index.html" class="back-btn">← 返回首页</a>
+  <div class="top-slogan">用数据读懂消费 ｜ 用内容连接品牌</div>
+</div>
+
+<div class="page-nav">
+  <a href="index.html">首页</a>
+  <a href="identity.html" class="active">身份</a>
+  <a href="skills.html">能力</a>
+  <a href="practice.html">实践</a>
+  <a href="focus.html">关注</a>
+</div>
+
+<div class="detail-container">
+  <div class="detail-header">
+    <div class="icon">●</div>
+    <h1>我的身份</h1>
+    <div class="en">BRAND OPERATOR IDENTITY</div>
+  </div>
+
+  <div class="detail-section">
+    <h2>基本信息</h2>
+    <div class="info-grid">
+      <div class="info-item"><div class="label">姓名</div><div class="value">高晓萌</div></div>
+      <div class="info-item"><div class="label">年龄</div><div class="value">23 岁</div></div>
+      <div class="info-item"><div class="label">所在地</div><div class="value">上海</div></div>
+      <div class="info-item"><div class="label">学历</div><div class="value">硕士在读</div></div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>教育背景</h2>
+    <div class="edu-item">
+      <div class="school">上海对外经贸大学 · 硕士 · 金融学</div>
+      <div class="meta">2025.09 - 2027.06 · GPA 3.45/4</div>
+      <div class="course">主修：金融统计与计量方法、离岸金融监管与风险防范、公司价值管理与案例</div>
+    </div>
+    <div class="edu-item">
+      <div class="school">渤海大学 · 本科 · 金融学</div>
+      <div class="meta">2021.09 - 2025.06 · GPA 3.43/4</div>
+      <div class="course">主修：货币金融学、微观经济学、宏观经济学、商业银行经营学<br>辅修：管理学、中级财务会计、财务会计实训、高级财务会计、税务会计实训</div>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>个人特质</h2>
+    <div class="tag-row">
+      <span class="tag">数据敏感</span>
+      <span class="tag">内容感强</span>
+      <span class="tag">执行落地</span>
+      <span class="tag">结果导向</span>
+      <span class="tag">逻辑清晰</span>
+      <span class="tag">抗压能力</span>
+    </div>
+  </div>
+
+  <div class="detail-section">
+    <h2>求职意向</h2>
+    <p style="font-size:14px; color:#555; line-height:1.9">品牌方 / 平台 · 电商运营<br>期待在内容 × 数据 × 协作的交叉口长期成长</p>
+  </div>
+</div>
+
+<div class="contact-bar">
+  <div>📞 <strong>19356153101</strong></div>
+  <div>📧 <strong>564106263@qq.com</strong></div>
+</div>
+
+<div class="xhs-mark">📕 Simone_Gao</div>
+
+</body>
+</html>
