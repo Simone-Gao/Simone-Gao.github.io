@@ -7,38 +7,19 @@
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; background: linear-gradient(110deg, #fde2e4 0%, #fce7c8 35%, #d6efd6 70%, #cfe7f5 100%); min-height: 100vh; color: #2d2d2d; padding: 80px 20px 40px; }
-
-  /* 固定顶部导航 */
-  .top-bar {
-    position: fixed; top: 0; left: 0; right: 0;
-    background: rgba(255,255,255,0.85); backdrop-filter: blur(12px);
-    padding: 14px 20px; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 10px;
-  }
-  .back-btn {
-    background: #fff; padding: 6px 14px; border-radius: 16px;
-    color: #666; font-size: 13px; font-weight: 500; cursor: pointer;
-    border: 1px solid #fde2e4; transition: all 0.2s;
-  }
+  .top-bar { position: fixed; top: 0; left: 0; right: 0; background: rgba(255,255,255,0.85); backdrop-filter: blur(12px); padding: 14px 20px; z-index: 100; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); flex-wrap: wrap; gap: 10px; }
+  .back-btn { background: #fff; padding: 6px 14px; border-radius: 16px; color: #666; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid #fde2e4; transition: all 0.2s; }
   .back-btn:hover { background: #fde2e4; color: #b94a59; }
   .back-btn.hidden { display: none; }
   .top-slogan { font-size: 13px; color: #888; letter-spacing: 0.5px; }
   .page-nav { display: flex; gap: 8px; flex-wrap: wrap; }
-  .page-nav-item {
-    background: #fff; padding: 6px 14px; border-radius: 16px;
-    color: #666; font-size: 13px; font-weight: 500; cursor: pointer;
-    border: 1px solid transparent; transition: all 0.2s;
-  }
+  .page-nav-item { background: #fff; padding: 6px 14px; border-radius: 16px; color: #666; font-size: 13px; font-weight: 500; cursor: pointer; border: 1px solid transparent; transition: all 0.2s; }
   .page-nav-item:hover { border-color: #fde2e4; color: #b94a59; }
-  .page-nav-item.active { background: linear-gradient(135deg, #ec4899, #f97316); color: #fff; border-color: transparent; }
-
-  /* 页面切换动画 */
+  .page-nav-item.active { background: linear-gradient(135deg, #ec4899, #f97316); color: #fff; }
   .page-section { display: none; animation: fadeIn 0.4s ease; }
   .page-section.active { display: block; }
   @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* 首页布局 */
   .layout { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 360px 1fr; grid-template-rows: auto auto; gap: 24px; align-items: stretch; position: relative; }
   .card { background: #fff; border-radius: 22px; padding: 24px 22px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); position: relative; }
   .card-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; margin-bottom: 12px; }
@@ -67,8 +48,7 @@
   .hi-tag { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,0.95); padding: 8px 18px; border-radius: 18px; font-size: 13px; color: #555; box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
   .float { position: absolute; background: rgba(255,255,255,0.92); padding: 8px 14px; border-radius: 14px; font-size: 13px; font-weight: 600; color: #2d2d2d; box-shadow: 0 6px 18px rgba(0,0,0,0.08); backdrop-filter: blur(4px); white-space: nowrap; z-index: 2; }
   .float-sub { font-size: 10px; color: #999; font-weight: 400; margin-top: 2px; letter-spacing: 0.5px; }
-  .float-1 { top: 18%; left: 0%; } .float-2 { top: 12%; right: -5%; }
-  .float-3 { bottom: 22%; left: -8%; } .float-4 { bottom: 18%; right: -3%; }
+  .float-1 { top: 18%; left: 0%; } .float-2 { top: 12%; right: -5%; } .float-3 { bottom: 22%; left: -8%; } .float-4 { bottom: 18%; right: -3%; }
   .skill-headline { margin: 14px 0; }
   .skill-headline span { display: inline-block; font-size: 18px; font-weight: 700; margin-right: 6px; }
   .skill-headline .c1 { color: #e35d6a; } .skill-headline .c2 { color: #4caf50; } .skill-headline .c3 { color: #8e6bd9; }
@@ -77,7 +57,6 @@
   .skill-item strong { display: block; font-size: 14px; color: #2d2d2d; font-weight: 600; margin-bottom: 2px; }
   .skill-item .desc { font-size: 12.5px; color: #888; }
 
-  /* 详情页样式 */
   .detail-container { max-width: 800px; margin: 0 auto; background: #fff; border-radius: 22px; padding: 40px 36px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
   .detail-header { text-align: center; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px dashed #fde2e4; }
   .detail-header .icon { width: 56px; height: 56px; border-radius: 50%; background: #fde2e4; color: #e35d6a; display: inline-flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 12px; }
@@ -107,17 +86,25 @@
   .skill-block .points { margin-top: 10px; }
   .skill-block .points li { font-size: 13px; color: #666; line-height: 1.8; padding-left: 18px; position: relative; list-style: none; }
   .skill-block .points li::before { content: "✓"; position: absolute; left: 0; color: #4caf50; font-weight: 700; }
-  .job-block { background: #faf7ff; border-radius: 16px; padding: 22px; margin-bottom: 20px; border-left: 4px solid #8e6bd9; }
-  .job-head { display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
-  .job-title { font-weight: 700; color: #2d2d2d; font-size: 15px; }
-  .job-time { font-size: 12px; color: #888; }
-  .job-company { font-size: 13px; color: #6c4eb8; font-weight: 500; margin-bottom: 12px; }
+
+  .job-block { background: #faf7ff; border-radius: 16px; margin-bottom: 14px; border-left: 4px solid #8e6bd9; overflow: hidden; }
+  .job-block summary { padding: 18px 22px; list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; transition: background 0.2s; }
+  .job-block summary::-webkit-details-marker { display: none; }
+  .job-block summary::before { content: "▸"; color: #8e6bd9; font-size: 14px; transition: transform 0.2s; margin-right: 4px; flex-shrink: 0; }
+  .job-block[open] summary::before { transform: rotate(90deg); }
+  .job-block summary:hover { background: rgba(236,228,255,0.3); }
+  .job-block summary > div:first-child { flex: 1; }
+  .job-title { font-weight: 700; color: #2d2d2d; font-size: 15px; margin-bottom: 4px; }
+  .job-time { font-size: 12px; color: #888; flex-shrink: 0; }
+  .job-company { font-size: 13px; color: #6c4eb8; font-weight: 500; }
+  .job-content { padding: 0 22px 18px; border-top: 1px dashed #ece4ff; padding-top: 14px; margin-top: 0; }
   .job-list { list-style: none; }
   .job-list li { font-size: 13.5px; color: #555; line-height: 1.85; padding: 8px 0 8px 18px; position: relative; border-bottom: 1px dashed #ece4ff; }
   .job-list li:last-child { border-bottom: none; }
   .job-list li::before { content: "▸"; position: absolute; left: 0; color: #8e6bd9; font-weight: 700; }
   .job-list li strong { color: #2d2d2d; font-weight: 600; }
   .job-tag { display: inline-block; background: #ece4ff; color: #6c4eb8; padding: 3px 10px; border-radius: 10px; font-size: 11.5px; margin-right: 6px; font-weight: 500; }
+
   .focus-block { background: #f4faf6; border-radius: 16px; padding: 22px; margin-bottom: 18px; border-left: 4px solid #5cb88a; }
   .focus-block h3 { font-size: 17px; color: #2d2d2d; margin-bottom: 8px; font-weight: 700; }
   .focus-block p { font-size: 13.5px; color: #555; line-height: 1.85; }
@@ -125,12 +112,9 @@
   .vision h2 { font-size: 18px; color: #b94a59; margin-bottom: 12px; }
   .vision p { font-size: 14px; color: #555; line-height: 1.9; }
 
-  /* 底部联系条 */
   .contact-bar { max-width: 1200px; margin: 24px auto 0; background: #fff; border-radius: 18px; padding: 16px 24px; text-align: center; font-size: 13px; color: #666; box-shadow: 0 6px 20px rgba(0,0,0,0.06); display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; }
   .contact-bar strong { color: #2d2d2d; }
   .xhs-mark { position: fixed; bottom: 16px; right: 16px; background: rgba(255,255,255,0.85); padding: 6px 12px; border-radius: 16px; font-size: 11px; color: #ff2442; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-
-  /* 响应式 */
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; grid-template-rows: auto; gap: 16px; }
     .card-identity, .card-skills, .card-practice, .card-focus { grid-column: 1; grid-row: auto; }
@@ -144,7 +128,6 @@
 </head>
 <body>
 
-<!-- 固定顶部导航 -->
 <div class="top-bar">
   <span class="back-btn" data-target="home">← 返回首页</span>
   <div class="page-nav">
@@ -156,7 +139,6 @@
   </div>
 </div>
 
-<!-- ========== 首页 ========== -->
 <section id="home" class="page-section active">
   <div class="layout">
     <div class="card card-identity">
@@ -219,7 +201,6 @@
   </div>
 </section>
 
-<!-- ========== 身份详情 ========== -->
 <section id="identity" class="page-section">
   <div class="detail-container">
     <div class="detail-header">
@@ -263,15 +244,9 @@
         <span class="tag">抗压能力</span>
       </div>
     </div>
-
-    <div class="detail-section">
-      <h2>求职意向</h2>
-      <p style="font-size:14px; color:#555; line-height:1.9">品牌方 / 平台 · 电商运营<br>期待在内容 × 数据 × 协作的交叉口长期成长</p>
-    </div>
   </div>
 </section>
 
-<!-- ========== 能力详情 ========== -->
 <section id="skills" class="page-section">
   <div class="detail-container">
     <div class="detail-header">
@@ -329,7 +304,6 @@
   </div>
 </section>
 
-<!-- ========== 实践详情 ========== -->
 <section id="practice" class="page-section">
   <div class="detail-container">
     <div class="detail-header">
@@ -339,63 +313,74 @@
       <div class="sub">从执行到归因 · 从内容到增长</div>
     </div>
 
-    <div class="job-block">
-      <div class="job-head">
-        <div class="job-title">地素时尚股份有限公司</div>
+    <details class="job-block">
+      <summary>
+        <div>
+          <div class="job-title">地素时尚股份有限公司</div>
+          <div class="job-company">营销管理中心 · 货架电商部 · DZ 货架运营组 · 电商运营实习生</div>
+        </div>
         <div class="job-time">2026.06 - 2026.09</div>
+      </summary>
+      <div class="job-content">
+        <ul class="job-list">
+          <li><strong>切片剪辑发布：</strong>基于天猫/抖音直播回放，独立完成直播切片筛选与短视频剪辑。曾产出 1 条夏季清仓直播切片作为店铺当月重点爆款内容。围绕停留时长、讲解完整度、商品匹配度等维度筛选高光片段，单周分发 200 条至商品详情页。</li>
+          <li><strong>内容种草运营：</strong>聚焦品牌代言人同款新品，独立完成博主拍摄素材的二次编辑与商品挂载（含标题/文案撰写），上新期累计发布 50 条种草内容，覆盖 15 件代言人同款新品。</li>
+          <li><strong>数据看板维护：</strong>独立维护店铺内容种草数据看板，每日基于生意参谋后台拉取并汇总发布量、曝光、加购、种草成交、店铺 GMV、行业排名等全链路数据，输出日/周/月报。</li>
+        </ul>
+        <div style="margin-top:12px">
+          <span class="job-tag">剪映</span>
+          <span class="job-tag">生意参谋</span>
+          <span class="job-tag">种草运营</span>
+        </div>
       </div>
-      <div class="job-company">营销管理中心 · 货架电商部 · DZ 货架运营组 · 电商运营实习生</div>
-      <ul class="job-list">
-        <li><strong>切片剪辑发布：</strong>基于天猫/抖音直播回放，独立完成直播切片筛选与短视频剪辑。曾产出 1 条夏季清仓直播切片作为店铺当月重点爆款内容。围绕停留时长、讲解完整度、商品匹配度等维度筛选高光片段，单周分发 200 条至商品详情页。</li>
-        <li><strong>内容种草运营：</strong>聚焦品牌代言人同款新品，独立完成博主拍摄素材的二次编辑与商品挂载（含标题/文案撰写），上新期累计发布 50 条种草内容，覆盖 15 件代言人同款新品。</li>
-        <li><strong>数据看板维护：</strong>独立维护店铺内容种草数据看板，每日基于生意参谋后台拉取并汇总发布量、曝光、加购、种草成交、店铺 GMV、行业排名等全链路数据，输出日/周/月报。</li>
-      </ul>
-      <div style="margin-top:10px">
-        <span class="job-tag">剪映</span>
-        <span class="job-tag">生意参谋</span>
-        <span class="job-tag">种草运营</span>
-      </div>
-    </div>
+    </details>
 
-    <div class="job-block">
-      <div class="job-head">
-        <div class="job-title">德醴嘉贸易有限公司</div>
+    <details class="job-block">
+      <summary>
+        <div>
+          <div class="job-title">德醴嘉贸易有限公司</div>
+          <div class="job-company">跨境电商订单实习生</div>
+        </div>
         <div class="job-time">2026.03 - 2026.06</div>
+      </summary>
+      <div class="job-content">
+        <ul class="job-list">
+          <li><strong>ERP 开票对账：</strong>独立负责抖音、天猫、京东三大电商平台消费者订单的开票与对账工作。通过旺店通 ERP 平台逐笔核对开票信息（抬头、税号、金额等），累计开票 400+ 张、准确率 100%。同时对接销售部门完成增值税专用发票的开具。</li>
+          <li><strong>跨境订单跟进：</strong>通过旺店通 ERP 创建跨境电商样品订单 80+ 笔，涵盖店铺、物流公司、商品名称及数量等信息，准确率 100%。实时监控订单状态，及时处理异常并汇报。</li>
+          <li><strong>商品入库登记：</strong>根据境外装箱单（Packing List）与商业发票（Commercial Invoice），通过 Excel 编制装运入库单，1-3 月完成 6 类葡萄酒装运入库单编制、数据零差错，为仓储入库及财务成本核算提供准确依据。</li>
+        </ul>
+        <div style="margin-top:12px">
+          <span class="job-tag">旺店通 ERP</span>
+          <span class="job-tag">三平台运营</span>
+          <span class="job-tag">跨境订单</span>
+        </div>
       </div>
-      <div class="job-company">跨境电商订单实习生</div>
-      <ul class="job-list">
-        <li><strong>ERP 开票对账：</strong>独立负责抖音、天猫、京东三大电商平台消费者订单的开票与对账工作。通过旺店通 ERP 平台逐笔核对开票信息（抬头、税号、金额等），累计开票 400+ 张、准确率 100%。同时对接销售部门完成增值税专用发票的开具。</li>
-        <li><strong>跨境订单跟进：</strong>通过旺店通 ERP 创建跨境电商样品订单 80+ 笔，涵盖店铺、物流公司、商品名称及数量等信息，准确率 100%。实时监控订单状态，及时处理异常并汇报。</li>
-        <li><strong>商品入库登记：</strong>根据境外装箱单（Packing List）与商业发票（Commercial Invoice），通过 Excel 编制装运入库单，1-3 月完成 6 类葡萄酒装运入库单编制、数据零差错，为仓储入库及财务成本核算提供准确依据。</li>
-      </ul>
-      <div style="margin-top:10px">
-        <span class="job-tag">旺店通 ERP</span>
-        <span class="job-tag">三平台运营</span>
-        <span class="job-tag">跨境订单</span>
-      </div>
-    </div>
+    </details>
 
-    <div class="job-block">
-      <div class="job-head">
-        <div class="job-title">上海收钱吧互联网科技股份有限公司</div>
+    <details class="job-block">
+      <summary>
+        <div>
+          <div class="job-title">上海收钱吧互联网科技股份有限公司</div>
+          <div class="job-company">风控实习生</div>
+        </div>
         <div class="job-time">2025.12 - 2026.03</div>
+      </summary>
+      <div class="job-content">
+        <ul class="job-list">
+          <li><strong>消费洞察：</strong>负责《逾期大额商户风险周报》的逾期用户行业和省份模块。通过对每周 80-100 名大额逾期商户进行分析，输出"餐饮小吃（逾期率 35%）、广东省（占比 28%）"等核心风险标签。</li>
+          <li><strong>数图驱动：</strong>以平均逾期天数与 DPD30+ 占比分析为基础，制作风险散点图，并建立各渠道风险指标的时间趋势图，支撑信贷风险复盘会的周期性决策。</li>
+          <li><strong>风险洞察：</strong>运用 IF 函数与数据透视表，对新老客户、渠道、逾期天数等指标进行交叉对比分析，识别高风险与低风险商户组合，沉淀 5 个典型预警案例。</li>
+        </ul>
+        <div style="margin-top:12px">
+          <span class="job-tag">Excel 进阶</span>
+          <span class="job-tag">数据可视化</span>
+          <span class="job-tag">风险分析</span>
+        </div>
       </div>
-      <div class="job-company">风控实习生</div>
-      <ul class="job-list">
-        <li><strong>消费洞察：</strong>负责《逾期大额商户风险周报》的逾期用户行业和省份模块。通过对每周 80-100 名大额逾期商户进行分析，输出"餐饮小吃（逾期率 35%）、广东省（占比 28%）"等核心风险标签。</li>
-        <li><strong>数图驱动：</strong>以平均逾期天数与 DPD30+ 占比分析为基础，制作风险散点图，并建立各渠道风险指标的时间趋势图，支撑信贷风险复盘会的周期性决策。</li>
-        <li><strong>风险洞察：</strong>运用 IF 函数与数据透视表，对新老客户、渠道、逾期天数等指标进行交叉对比分析，识别高风险与低风险商户组合，沉淀 5 个典型预警案例。</li>
-      </ul>
-      <div style="margin-top:10px">
-        <span class="job-tag">Excel 进阶</span>
-        <span class="job-tag">数据可视化</span>
-        <span class="job-tag">风险分析</span>
-      </div>
-    </div>
+    </details>
   </div>
 </section>
 
-<!-- ========== 关注详情 ========== -->
 <section id="focus" class="page-section">
   <div class="detail-container">
     <div class="detail-header">
@@ -426,11 +411,9 @@
   </div>
 </section>
 
-<!-- 底部联系条（所有页共用） -->
 <div class="contact-bar">
   <div>📞 <strong>19356153101</strong></div>
   <div>📧 <strong>564106263@qq.com</strong></div>
-  <div>🎯 <strong>品牌方 / 平台 · 电商运营</strong></div>
 </div>
 
 <div class="xhs-mark">📕 Simone_Gao</div>
@@ -440,31 +423,21 @@
     document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
     const target = document.getElementById(id);
     if (target) target.classList.add('active');
-
     document.querySelectorAll('.page-nav-item').forEach(a => {
       a.classList.toggle('active', a.dataset.target === id);
     });
     document.querySelector('.back-btn').classList.toggle('hidden', id === 'home');
-
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (location.hash.slice(1) !== id) {
-      history.pushState(null, '', '#' + id);
-    }
+    if (location.hash.slice(1) !== id) history.pushState(null, '', '#' + id);
   }
-
   document.addEventListener('click', e => {
     const el = e.target.closest('[data-target]');
-    if (el) {
-      e.preventDefault();
-      showPage(el.dataset.target);
-    }
+    if (el) { e.preventDefault(); showPage(el.dataset.target); }
   });
-
   window.addEventListener('popstate', () => {
     const id = location.hash.slice(1) || 'home';
     showPage(id);
   });
-
   document.addEventListener('DOMContentLoaded', () => {
     const id = location.hash.slice(1) || 'home';
     showPage(id);
